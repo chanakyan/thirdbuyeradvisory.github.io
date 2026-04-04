@@ -1,484 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="Rajeshkumar Venugopal">
-<title>Third Buyer Advisory — Rajeshkumar Venugopal</title>
-<meta name="description" content="Working papers on sovereign stress, supply chain currency risk, and early warning instruments. Third Buyer Advisory — Rajeshkumar Venugopal.">
-<meta name="keywords" content="sovereign stress, black market premium, reflection coefficient, supply chain risk, currency crisis, early warning, Third Buyer Advisory, India, China, EREV, admissibility governance">
-<link rel="canonical" href="https://thirdbuyeradvisory.org/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://thirdbuyeradvisory.org/">
-<meta property="og:title" content="Third Buyer Advisory — Rajeshkumar Venugopal">
-<meta property="og:description" content="Working papers on sovereign stress detection, supply chain currency risk, early warning instruments, India, China, and electrified powertrain governance. All papers open access on Zenodo.">
-<meta property="og:site_name" content="Third Buyer Advisory">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="@vrajeshkumar">
-<meta name="twitter:title" content="Third Buyer Advisory — Rajeshkumar Venugopal">
-<meta name="twitter:description" content="Working papers on sovereign stress detection, supply chain currency risk, early warning instruments, India, China, and electrified powertrain governance. All papers open access on Zenodo.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --ink: #1a1a18; --paper: #f5f2eb; --rule: #c8c2b0;
-  --accent: #8b2020; --muted: #6b6557;
-  --mono: 'IBM Plex Mono', monospace; --serif: 'EB Garamond', Georgia, serif;
-}
-html { font-size: 17px; scroll-behavior: smooth; }
-body { background: var(--paper); color: var(--ink); font-family: var(--serif); line-height: 1.65; }
-header { border-bottom: 1.5px solid var(--ink); max-width: 800px; margin: 0 auto; padding: 2.8rem 2rem 2rem; }
-.org { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.9rem; }
-h1 { font-size: 2rem; font-weight: 500; line-height: 1.2; margin-bottom: 0.5rem; }
-.byline { font-size: 0.9rem; color: var(--muted); font-style: italic; }
-.byline a { color: var(--accent); text-decoration: none; }
-.byline a:hover { text-decoration: underline; }
-.about { max-width: 800px; margin: 0 auto; padding: 1.6rem 2rem; border-bottom: 1px solid var(--rule); }
-.about p { font-size: 1rem; color: var(--muted); max-width: 60ch; }
-.nav { max-width: 800px; margin: 0 auto; padding: 1rem 2rem; border-bottom: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; }
-.nav a { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
-.nav a:hover { color: var(--accent); }
-main { max-width: 800px; margin: 0 auto; padding: 0 2rem 4rem; }
-.section-label { font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin: 2.8rem 0 1.2rem; display: flex; align-items: center; gap: 1rem; }
-.section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
-.paper { padding: 1.2rem 0; border-bottom: 1px solid var(--rule); }
-.paper:last-child { border-bottom: none; }
-.paper-title { font-size: 1.02rem; font-weight: 500; line-height: 1.35; margin-bottom: 0.25rem; }
-.paper-title a { color: var(--ink); text-decoration: none; }
-.paper-title a:hover { color: var(--accent); }
-.paper-meta { font-family: var(--mono); font-size: 0.64rem; color: var(--muted); margin-bottom: 0.55rem; }
-.paper-meta a { color: var(--accent); text-decoration: none; }
-.paper-meta a:hover { text-decoration: underline; }
-.paper-abstract { font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 66ch; }
-footer { border-top: 1.5px solid var(--ink); max-width: 800px; margin: 0 auto 3rem; padding: 1.4rem 2rem 0; display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; }
-footer .contact { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); }
-footer .contact a { color: var(--accent); text-decoration: none; }
-footer .contact a:hover { text-decoration: underline; }
-footer .orcid { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); display: flex; align-items: center; gap: 0.35rem; }
-footer .orcid a { color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 0.35rem; }
-footer .orcid a:hover { color: var(--accent); }
-footer .orcid svg { width: 16px; height: 16px; flex-shrink: 0; }
-footer .linkedin a { color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 0.35rem; font-family: var(--mono); font-size: 0.65rem; }
-footer .linkedin a:hover { color: var(--accent); }
-footer .linkedin svg { width: 16px; height: 16px; flex-shrink: 0; }
-.filter-bar { max-width: 800px; margin: 0 auto; padding: 0.9rem 2rem; border-bottom: 1px solid var(--rule); }
-.filter-bar input { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.05em; background: transparent; border: none; border-bottom: 1px solid var(--rule); color: var(--ink); width: 100%; padding: 0.3rem 0; outline: none; }
-.filter-bar input::placeholder { color: var(--muted); }
-.filter-bar input:focus { border-bottom-color: var(--accent); }
-.paper.hidden { display: none; }
-.section-label.hidden { display: none; }
-.no-results { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); padding: 2rem 0; display: none; }
-@media (max-width: 600px) { h1 { font-size: 1.5rem; } .paper-title { font-size: 0.95rem; } }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Third Buyer Advisory — Rajeshkumar Venugopal</title>
+  <style>
+    :root {
+      --red:   #b5121b;
+      --dark:  #1a1a1a;
+      --mid:   #555;
+      --rule:  #ddd;
+      --serif: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+      --mono:  "Courier New", Courier, monospace;
+      --max:   740px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 17px; scroll-behavior: smooth; }
+    body { font-family: var(--serif); color: var(--dark); background: #fff; line-height: 1.65; }
+
+    header {
+      border-bottom: 2px solid var(--dark);
+      padding: 3rem 1.5rem 2rem;
+      max-width: var(--max); margin: 0 auto;
+    }
+    header h1 {
+      font-size: 1.1rem; font-weight: 700; letter-spacing: .04em;
+      text-transform: uppercase; color: var(--red); margin-bottom: .25rem;
+    }
+    .author  { font-size: 1.85rem; font-weight: 400; line-height: 1.2; margin-bottom: .6rem; }
+    .tagline { font-size: .88rem; color: var(--mid); font-style: italic; margin-bottom: 1rem; }
+    .desc    { font-size: .95rem; color: var(--mid); max-width: 580px; margin-bottom: 1.4rem; }
+
+    #search {
+      font-family: var(--serif); font-size: .95rem;
+      width: 100%; max-width: 480px;
+      padding: .5rem .75rem;
+      border: 1px solid var(--dark); outline: none;
+      color: var(--dark); background: #fff;
+    }
+    #search:focus { border-color: var(--red); }
+
+    #status {
+      font-family: var(--mono); font-size: .78rem;
+      color: var(--mid); margin-top: .5rem; min-height: 1.2em;
+    }
+
+    nav {
+      border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+      padding: .75rem 1.5rem; font-size: .8rem; line-height: 2;
+      max-width: var(--max); margin: 0 auto; color: var(--mid);
+    }
+    nav a { color: var(--dark); text-decoration: none; font-style: italic; }
+    nav a:hover { color: var(--red); }
+
+    main { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+    section { margin-top: 3.5rem; }
+    section.hidden { display: none; }
+    section h2 {
+      font-size: .78rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--red);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: .5rem; margin-bottom: 2rem;
+    }
+
+    article.paper {
+      margin-bottom: 2.2rem; padding-bottom: 2.2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    article.paper:last-child { border-bottom: none; }
+    article.paper.hidden { display: none; }
+
+    /* Shimmer skeleton while the fetch is in-flight */
+    article.paper.loading {
+      min-height: 5rem; border-radius: 2px;
+      background: linear-gradient(90deg, #f4f4f4 25%, #e8e8e8 50%, #f4f4f4 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite linear;
+    }
+    @keyframes shimmer {
+      from { background-position: 200% 0; }
+      to   { background-position: -200% 0; }
+    }
+
+    article.paper h3 {
+      font-size: 1.05rem; font-weight: 700; line-height: 1.35;
+      margin-bottom: .4rem; text-transform: capitalize;
+    }
+    article.paper h3 a { color: var(--dark); text-decoration: none; }
+    article.paper h3 a:hover { color: var(--red); }
+
+    .meta {
+      font-family: var(--mono); font-size: .78rem; color: var(--mid);
+      margin-bottom: .65rem; display: flex; gap: 1.2rem; flex-wrap: wrap;
+    }
+    .meta .doi a {
+      color: var(--mid); text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+    }
+    .meta .doi a:hover { color: var(--red); border-bottom-color: var(--red); }
+
+    .abstract { font-size: .93rem; color: #333; line-height: 1.7; }
+
+    mark {
+      background: #fff0a0; color: inherit;
+      border-radius: 2px; padding: 0 1px;
+    }
+
+    footer {
+      border-top: 2px solid var(--dark); max-width: var(--max);
+      margin: 2rem auto 0; padding: 1.5rem 1.5rem 3rem;
+      font-size: .82rem; color: var(--mid); display: flex; gap: 1.5rem; flex-wrap: wrap;
+    }
+    footer a { color: var(--mid); text-decoration: none; }
+    footer a:hover { color: var(--red); }
+  </style>
 </head>
 <body>
 
 <header>
-  <div class="org">Third Buyer Advisory</div>
-  <h1>Rajeshkumar Venugopal</h1>
-  <div class="byline">
-    Independent researcher &middot;
-    <a href="https://x.com/vrajeshkumar">@vrajeshkumar</a>
-  </div>
+  <h1>Third Buyer Advisory</h1>
+  <div class="author">Rajeshkumar Venugopal</div>
+  <div class="tagline">Independent researcher · @vrajeshkumar</div>
+  <p class="desc">Working papers on sovereign stress detection, supply chain currency risk,
+    early warning instruments, India, China, and electrified powertrain governance.
+    All papers open access on Zenodo. Priority established by DOI timestamp.</p>
+  <input id="search" type="search" placeholder="Search papers…" autocomplete="off" spellcheck="false" disabled>
+  <div id="status">Loading…</div>
 </header>
 
-<div class="about">
-  <p>Working papers on sovereign stress detection, supply chain currency risk, early warning instruments, India, China, and electrified powertrain governance. All papers open access on Zenodo. Priority established by DOI timestamp.</p>
-</div>
-
-<nav class="nav">
-  <a href="#stress">Sovereign Stress</a>
-  <a href="#energy">Energy &amp; Commodity</a>
-  <a href="#china">China</a>
-  <a href="#india">India</a>
-  <a href="#governance">Governance</a>
-  <a href="#ev">Electrification</a>
-  <a href="#foundations">Foundations</a>
-  <a href="#strategy">Business Strategy</a>
-</nav>
-
-<div class="filter-bar">
-  <input type="search" id="filter" placeholder="Filter papers…" autocomplete="off" spellcheck="false">
-</div>
-
-<main>
-
-<div class="section-label" id="stress">Sovereign Stress &amp; Currency</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19367715">The Echo Chamber: Reflection, Memory, and Sovereign Stress in Currency and Commodity Markets</a></div>
-  <div class="paper-meta">2026-04-01 &middot; <a href="https://doi.org/10.5281/zenodo.19367715">10.5281/zenodo.19367715</a></div>
-  <div class="paper-abstract">The first reflection coefficient |k1|, derived from Rabiner and Schafer's acoustic tube model of the human vocal tract, is a domain-agnostic structural detector. A healthy market is a soundproof room; a market in crisis is a stone canyon. Validates on 39 years of Brent crude and 28 years of China iron ore import values.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19318342">Sovereign Stress as Geometry: A Discrete Trajectory Framework for Early Warning</a></div>
-  <div class="paper-meta">2026-03-29 &middot; <a href="https://doi.org/10.5281/zenodo.19318342">10.5281/zenodo.19318342</a></div>
-  <div class="paper-abstract">Sovereign governments under stress lie with statistics. They cannot lie with queues. Physical observables — BMP, queue time, local gold premium, viral velocity — stacked into a four-dimensional state vector. Sri Lanka validation: LPC prediction error crossed three-sigma in January 2022, three months before default.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19300200">Observing Distortion: A Physical Signal Framework for Sovereign Stress Detection</a></div>
-  <div class="paper-meta">2026-03-28 &middot; <a href="https://doi.org/10.5281/zenodo.19300200">10.5281/zenodo.19300200</a></div>
-  <div class="paper-abstract">Official data is a politically managed representation of physical reality. Four signal families: price distortion, quantity distortion, quality distortion, information distortion. Cliff defined as cross-family correlation approaching unity &mdash; the sovereign stress VIX.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19338367">Wolves Inside the Unit Circle</a></div>
-  <div class="paper-meta">2026-03-30 &middot; <a href="https://doi.org/10.5281/zenodo.19338367">10.5281/zenodo.19338367</a></div>
-  <div class="paper-abstract">China owns the manufacturing hub. It does not own the dollar. Wolf Warrior Coefficient derived from a first-order IIR filter model; China Vulnerability Index from SWIFT RMB Tracker and Brent crude data. Fifteen months of data: the wolves are inside the unit circle. The gap is narrowing.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19355658">The Dollar Conveyor: Commodity Settlement, Working Capital, and the Missing Constraint in US External Imbalance Analysis</a></div>
-  <div class="paper-meta">2026-03-31 &middot; <a href="https://doi.org/10.5281/zenodo.19355658">10.5281/zenodo.19355658</a></div>
-  <div class="paper-abstract">Settlement-Driven Dollar Demand (SDDD) &mdash; the stock and flow of dollar balances required to execute, finance, collateralize, insure, and hedge commodity and food trade. A significant share of what appears as foreign investment is working capital. When the dollar pipes ran dry, Bangladesh could not cook.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19181739">The Dollar Trap: A Four-Constraint Framework for the Permanence of Dollar Reserve Hegemony</a></div>
-  <div class="paper-meta">2026-03-23 &middot; <a href="https://doi.org/10.5281/zenodo.19181739">10.5281/zenodo.19181739</a></div>
-  <div class="paper-abstract">Network coordination impossibility, surplus disqualification, American employer dominance, and creative destruction selection explain structural dollar permanence. Yuan and Euro are structurally disqualified. The dollar's permanence derives not from political design but from eighty years of firm-level expansion in a system willing to let losers die.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19194636">The Dollar Trap: Export-Led Growth and Its Discontents</a></div>
-  <div class="paper-meta">2026-03-23 &middot; <a href="https://doi.org/10.5281/zenodo.19194636">10.5281/zenodo.19194636</a></div>
-  <div class="paper-abstract">Export-led growth systematically produces dollar dependency. Bangladesh shows what the dollar trap looks like at the bottom of the income distribution: 42.5 million idle LPG cylinders. China shows what it looks like when the trap is also a school district.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19102843">Rationing the Deficit: How American Tariffs Became the World's Most Powerful Allocation Mechanism</a></div>
-  <div class="paper-meta">2026-03-19 &middot; <a href="https://doi.org/10.5281/zenodo.19102843">10.5281/zenodo.19102843</a></div>
-  <div class="paper-abstract">The Trump tariff architecture is better understood as a rationing mechanism applied to the US structural current account deficit. What tariffs alter is not the size of the deficit but the conditionality of access to it. Countries inside the tariff gate receive an allocation of structural demand from the world's reserve-currency deficit engine.</div>
-</div>
-
-<div class="section-label" id="energy">Energy &amp; Commodity</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19360103">The Urea Cliff: Fertiliser Denial, Agricultural Collapse, and the Settlement-Driven Dollar Demand Mechanism in Sri Lanka</a></div>
-  <div class="paper-meta">2026-03-31 &middot; <a href="https://doi.org/10.5281/zenodo.19360103">10.5281/zenodo.19360103</a></div>
-  <div class="paper-abstract">The fertiliser ban instantiated a policy-imposed supply availability collapse six months before the letter-of-credit system failed for fuel. Every dollar of urea not imported removed approximately $3.46 from the reserve replenishment machine. Saving $63M in fertiliser imports cost Sri Lanka $315M/year in net dollar flows and a sovereign default.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19249679">The LPG Wall: Why the Fuel That Feeds Asia Is Not Coming Back</a></div>
-  <div class="paper-meta">2026-03-27 &middot; <a href="https://doi.org/10.5281/zenodo.19249679">10.5281/zenodo.19249679</a></div>
-  <div class="paper-abstract">South Pars was the world's largest gas processing facility. LPG supply from South Pars is not disrupted. It is gone, on any planning horizon that matters. China entering the open LPG market is a supergravity event for every other buyer: Bangladesh, Philippines, Pakistan, Vietnam, Myanmar, Nepal, Cambodia.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19249800">Holy Cow: Compressed Biogas from Cattle Dung as India's Answer to the LPG Wall</a></div>
-  <div class="paper-meta">2026-03-27 &middot; <a href="https://doi.org/10.5281/zenodo.19249800">10.5281/zenodo.19249800</a></div>
-  <div class="paper-abstract">300 million cattle producing 3 billion kg of dung per day; 744 SATAT-approved sites holding Letters of Intent; Army Corps of Engineers at emergency construction speed. The cow is sacred and is India's sovereign energy infrastructure. The army will build the proof of this within 180 days.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19249572">The Refining Wall: Why Capacity, Not Crude, Is the Binding Constraint in the Post-Iran Energy Order</a></div>
-  <div class="paper-meta">2026-03-27 &middot; <a href="https://doi.org/10.5281/zenodo.19249572">10.5281/zenodo.19249572</a></div>
-  <div class="paper-abstract">China's restriction of domestic refined product exports transformed a supply disruption into a structural realignment of the global refining map. India holds significant export-oriented refining capacity, political neutrality, and long-standing crude relationships across both sanctioned and non-sanctioned producers.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19100668">Who Feeds the Pigs: Soybean Dependency, Soil Contamination, and a Zero-Recurring-Cost Architecture for Taiwan Strait Deterrence</a></div>
-  <div class="paper-meta">2026-03-18 &middot; <a href="https://doi.org/10.5281/zenodo.19100668">10.5281/zenodo.19100668</a></div>
-  <div class="paper-abstract">China's binding constraint on Taiwan kinetic action is domestic political legitimacy under food price inflation arriving before military commitment is irreversible. A domestic US soybean procurement program activating when satellite imagery confirms amphibious vessel assembly exceeds threshold &mdash; no export ban, no SWIFT disconnection, no multilateral coordination required.</div>
-</div>
-
-<div class="section-label" id="china">China</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19297611">Eight Signals Beijing Cannot Fake: A Proxy Framework for True Chinese GDP</a></div>
-  <div class="paper-meta">2026-03-28 &middot; <a href="https://doi.org/10.5281/zenodo.19297611">10.5281/zenodo.19297611</a></div>
-  <div class="paper-abstract">Eight independently observable indicators: private-sector land auction revenue, satellite nighttime luminosity, sectoral electricity consumption, secondary residential transaction volumes, Shanghai port throughput, railway freight, marriage registration, and birth registration. The strongest case against recovery is the arithmetic contraction of the household-formation pipeline itself.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19161913">The Six Wallets Trap: Multigenerational Balance Sheet Contagion in China's Housing Crisis</a></div>
-  <div class="paper-meta">2026-03-22 &middot; <a href="https://doi.org/10.5281/zenodo.19161913">10.5281/zenodo.19161913</a></div>
-  <div class="paper-abstract">A first-home purchase involves contributions from six wallets &mdash; two parents and four grandparents. An income shock propagates upstream, impairing up to three household balance sheets simultaneously. Standard monetary and fiscal policy tools are structurally incapable of resolving it.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19162677">Lose Exports, Lose Home, Lose School: Export Shock Transmission Through China's Six Wallets Housing Finance System</a></div>
-  <div class="paper-meta">2026-03-22 &middot; <a href="https://doi.org/10.5281/zenodo.19162677">10.5281/zenodo.19162677</a></div>
-  <div class="paper-abstract">The terminal casualty of a trade war is not a factory. It is a child in a rural school, separated from both parents, whose family purchased a Shenzhen apartment believing it was a school district. A six-link transmission chain from US tariffs to hukou-linked school access loss.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19164078">The Vacancy Signal: A Forward Contagion Map of China's Urban Economic Stress</a></div>
-  <div class="paper-meta">2026-03-22 &middot; <a href="https://doi.org/10.5281/zenodo.19164078">10.5281/zenodo.19164078</a></div>
-  <div class="paper-abstract">Grade-A office vacancy is a leading indicator of urban economic stress operating 12&ndash;24 months ahead of GDP revisions. Five-variable Vacancy-Migration-Income-School-Residual contagion framework. Guangzhou, Hangzhou, and Dongguan identified as the three cities where the Shenzhen-pattern structural reversal will become visible within 24 months.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19115728">China's Triple Trap: Land Finance, Illiquid Household Savings, and the Structural Limits of Capital Deployment</a></div>
-  <div class="paper-meta">2026-03-19 &middot; <a href="https://doi.org/10.5281/zenodo.19115728">10.5281/zenodo.19115728</a></div>
-  <div class="paper-abstract">Three interacting constraints: the land-finance trap of local governments, the savings trap of households, and the capital-deployment trap of firms. The global expansion of Chinese manufacturing in solar, batteries, and EVs illustrates the capital-deployment trap: productive firms relocate production capacity rather than financial assets.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19318886">Cool Car. No Spare.</a></div>
-  <div class="paper-meta">2026-03-29 &middot; <a href="https://doi.org/10.5281/zenodo.19318886">10.5281/zenodo.19318886</a></div>
-  <div class="paper-abstract">Parts Graph density &mdash; not engineering quality &mdash; is the binding constraint on automotive market survival. Major insurers have refused to cover specific BYD models. A car that cannot be insured has already failed commercially, regardless of its engineering scorecard. Insurance claims data is the only real-time sensor of Parts Graph failure, visible months before any other market signal.</div>
-</div>
-
-<div class="section-label" id="india">India</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19326283">India Simply Is: A Constraint-First Analysis of Institutional Plurality</a></div>
-  <div class="paper-meta">2026-03-30 &middot; <a href="https://doi.org/10.5281/zenodo.19326283">10.5281/zenodo.19326283</a></div>
-  <div class="paper-abstract">India was not unified and then fragmented. It was plural as its default state. India's digital stack, constitutional architecture, civil services, and foreign policy doctrine all share a single logic: route through the plurality, not over it. The infrastructure era is closed. What comes next is the application layer.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19240764">The Nehru Dividend: How India's Foreign Service Built a Forty-Three Billion Dollar Business Out of Strategic Autonomy</a></div>
-  <div class="paper-meta">2026-03-26 &middot; <a href="https://doi.org/10.5281/zenodo.19240764">10.5281/zenodo.19240764</a></div>
-  <div class="paper-abstract">Seventy-five years of Indian strategic autonomy quantified across six streams: Russian crude discount, technology FDI, pharmaceutical exports, sovereign investment flows, brand exports, and Chabahar. Annual total: $43.3 billion. Countries that build relationships compound them. Countries that build leverage burn it.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19250234">The Chola-Nehru Model: A New Framework for Understanding India's Invisible Economic Power in 2026</a></div>
-  <div class="paper-meta">2026-03-27 &middot; <a href="https://doi.org/10.5281/zenodo.19250234">10.5281/zenodo.19250234</a></div>
-  <div class="paper-abstract">Not what India owns. What India enables. Not the alliance India joins. The indispensability India maintains to every alliance simultaneously. A descriptive framework for what India has already built, deployed, and benefits from invisibly and durably.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19222952">Guide to India 2026</a></div>
-  <div class="paper-meta">2026-03-25 &middot; <a href="https://doi.org/10.5281/zenodo.19222952">10.5281/zenodo.19222952</a></div>
-  <div class="paper-abstract">Seven-layer formalization stack operational as of March 2026: Aadhaar, UPI, ONDC, GST 2.0, Labour Codes 2025, Bhashini, WhatsApp. Journalist translation guides for US, UK, France, and Germany. Practitioner appendix for NGOs on enrollment procedures. Nothing described is proposed or projected.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19236351">India's GST vs. EU VAT Harmonization: Fiscal Federalism and the Completion of Tax Infrastructure</a></div>
-  <div class="paper-meta">2026-03-26 &middot; <a href="https://doi.org/10.5281/zenodo.19236351">10.5281/zenodo.19236351</a></div>
-  <div class="paper-abstract">The EU failed harmonization among wealthy, administratively capable economies after 59 years. India achieved indirect tax unification across 31 jurisdictions &mdash; poor, diverse, substantially informal &mdash; in eight years. The GST project constitutes the most significant act of fiscal institutional construction in the post-war developing world.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19094589">The Fiscal Floor: Why India's GST Collection Trajectory Is Systematically Underestimated</a></div>
-  <div class="paper-meta">2026-03-18 &middot; <a href="https://doi.org/10.5281/zenodo.19094589">10.5281/zenodo.19094589</a></div>
-  <div class="paper-abstract">Standard forecasting models one lever while missing three others. The formalization multiplier from progressive e-invoicing threshold reduction is a parameter that does not exist in pre-2022 models. GST collections of &#8377;44&ndash;50 lakh crore ($490&ndash;560B) by FY2029-30 against a &#8377;22.08 lakh crore base in FY2024-25.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19167881">GSTN as Accidental Blockchain: Why India's Tax Infrastructure Has Already Solved the Supply Chain Transparency Problem</a></div>
-  <div class="paper-meta">2026-03-22 &middot; <a href="https://doi.org/10.5281/zenodo.19167881">10.5281/zenodo.19167881</a></div>
-  <div class="paper-abstract">GSTN enforces invoice-level reconciliation through tax incentive rather than cryptographic consensus. ITC cannot be claimed unless the upstream transaction is confirmed. The result: a national transaction ledger tamper-resistant in practice, comprehensive in coverage, and enforced by financial self-interest at scale.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19204233">The Formalization Threshold: A Revision of the Lewis Model for Digital Public Infrastructure Economies</a></div>
-  <div class="paper-meta">2026-03-24 &middot; <a href="https://doi.org/10.5281/zenodo.19204233">10.5281/zenodo.19204233</a></div>
-  <div class="paper-abstract">In DPI economies, the boundary between subsistence and capitalist sectors is no longer set by productivity or wages. It is set by a formalization threshold. As the threshold falls, the Lewis surplus is made visible, taxable, and governable for the first time. Minimum wages become enforceable at transaction level.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19241950">The Vehicle That Powers the House: A Policy Framework for India</a></div>
-  <div class="paper-meta">2026-03-26 &middot; <a href="https://doi.org/10.5281/zenodo.19241950">10.5281/zenodo.19241950</a></div>
-  <div class="paper-abstract">EREV + BPAN + VAHAN + smart meters + UPI enables millions of vehicle batteries to operate as coordinated, verifiable, financially addressable energy nodes. At 20% fleet penetration, grid storage and demand response exceeds India's NEP 2035 targets at zero DISCOM capital expenditure. One condition: allow plugged-in vehicles to export electricity and receive UPI payment.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19120513">Portable Reputation as Labour Formalization: A DPI-Native Framework for India's Gig Economy</a></div>
-  <div class="paper-meta">2026-03-19 &middot; <a href="https://doi.org/10.5281/zenodo.19120513">10.5281/zenodo.19120513</a></div>
-  <div class="paper-abstract">A gig worker's rating and completion history are assets built through their own labour but owned entirely by the platform. Portable Labour Reputation Framework (PLRF): workers own, control, and port reputation across platforms using e-Shram, Aadhaar, Account Aggregator, and ONDC &mdash; without requiring employment reclassification.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19133479">The All-Women Factory Model: A Strategic and Economic Advisory for Manufacturers</a></div>
-  <div class="paper-meta">2026-03-20 &middot; <a href="https://doi.org/10.5281/zenodo.19133479">10.5281/zenodo.19133479</a></div>
-  <div class="paper-abstract">Lower total labor cost per unit, near-zero harassment liability, superior retention, and significant social capital in EU and US export markets. Royal Enfield's Cheyyar plant, inaugurated June 2025, is the most visible proof of concept in heavy manufacturing. This is not a diversity report. This is a cost and competitive advantage analysis.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19142988">The India Long-Stay Visa</a></div>
-  <div class="paper-meta">2026-03-21 &middot; <a href="https://doi.org/10.5281/zenodo.19142988">10.5281/zenodo.19142988</a></div>
-  <div class="paper-abstract">India built GSTN to collect taxes and accidentally built the world's most sophisticated SME counterparty verification system. India built Bhashini for linguistic inclusion and accidentally built the infrastructure that closes international deals in mother tongues. Change one parameter. Add two categories. Issue the card. Print the QR code on the back.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19219960">The Guide Economy: Bhashini, YouTube, WhatsApp, and the Zero-Capital Tourism Stack in South Asia</a></div>
-  <div class="paper-meta">2026-03-25 &middot; <a href="https://doi.org/10.5281/zenodo.19219960">10.5281/zenodo.19219960</a></div>
-  <div class="paper-abstract">A guide in Thanjavur who speaks Tamil and knows the Chola dynasty has more marketable knowledge than most people on earth. Four tools &mdash; Bhashini, YouTube, WhatsApp, Google Maps &mdash; constitute a zero-capital trust infrastructure connecting local knowledge to global demand. A five-star review is a capital asset. It compounds. It does not depreciate.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19228951">Wrong Market Wrong Vehicle Wrong Model: Why Frontier AI Misreads Global South Demand</a></div>
-  <div class="paper-meta">2026-03-26 &middot; <a href="https://doi.org/10.5281/zenodo.19228951">10.5281/zenodo.19228951</a></div>
-  <div class="paper-abstract">Frontier AI's natural market is old, shrinking, and largely saturated. India sells 21 million two-wheelers annually against 4 million passenger cars; ADAS calibrated for structured Western roads is irrelevant. India's Bhashini demonstrates the required architecture is already deployed, free to fork, and waiting to be adapted.</div>
-</div>
-
-<div class="section-label" id="governance">Governance &amp; Admissibility</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19248318">Admissibility Governance and the Rewiring of Global Trade</a></div>
-  <div class="paper-meta">2026-03-27 &middot; <a href="https://doi.org/10.5281/zenodo.19248318">10.5281/zenodo.19248318</a></div>
-  <div class="paper-abstract">Under admissibility regimes, market participation is conditioned not on tariffs or prices but on the ability to produce and sustain evidentiary proof. Enforcement operates through binary access decisions &mdash; admission, detention, exclusion, withdrawal &mdash; rather than continuous price-based adjustments.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19243003">Evidence as Access: Admissibility Governance and Epistemic Capacity as a Factor of Production</a></div>
-  <div class="paper-meta">2026-03-26 &middot; <a href="https://doi.org/10.5281/zenodo.19243003">10.5281/zenodo.19243003</a></div>
-  <div class="paper-abstract">Documentary insufficiency alone becomes sufficient for exclusion. Epistemic capacity &mdash; the institutionalized ability to generate and demonstrate verifiable knowledge &mdash; operates as a threshold factor of production. Predicts upstream migration of evidentiary thresholds, scale concentration, and resistance to deregulation.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19210384">UFLPA Compliance: The Question Nobody Is Asking</a></div>
-  <div class="paper-meta">2026-03-24 &middot; <a href="https://doi.org/10.5281/zenodo.19210384">10.5281/zenodo.19210384</a></div>
-  <div class="paper-abstract">UFLPA enforcement creates admissibility risk through a rebuttable presumption that cannot be rebutted without supply chain documentation most firms do not possess. The question nobody is asking: not whether you comply, but whether you can prove it to CBP's evidentiary standard at the moment of detention.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19102678">The Car That Must Explain Itself: Physics, Fleet Governance, and the &euro;35,000 Autonomy Reckoning</a></div>
-  <div class="paper-meta">2026-03-19 &middot; <a href="https://doi.org/10.5281/zenodo.19102678">10.5281/zenodo.19102678</a></div>
-  <div class="paper-abstract">Calibration shifts and firmware revisions do not generate fault codes. They produce distributional drift. Only fleet-scale statistical governance can surface emerging deviation before incident volume forces recall. Configuration traceability becomes affirmative defense. Unmanaged probability becomes liability.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19102430">Authority Without Observability: State-Space Transfer, Physics, and the Structural Instability of Level-2 ADAS</a></div>
-  <div class="paper-meta">2026-03-18 &middot; <a href="https://doi.org/10.5281/zenodo.19102430">10.5281/zenodo.19102430</a></div>
-  <div class="paper-abstract">Level-2 ADAS introduces a structural instability: the machine controller and human driver operate in incompatible state spaces without sufficient time for state reconstruction. Safety-critical systems that require abrupt authority transfer between controllers with incompatible state spaces cannot be guaranteed stable.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19185535">Architecture, Not Hype: Why Governance Topology May Matter More Than AI Spend Globally</a></div>
-  <div class="paper-meta">2026-03-23 &middot; <a href="https://doi.org/10.5281/zenodo.19185535">10.5281/zenodo.19185535</a></div>
-  <div class="paper-abstract">Any autonomy architecture entering the EU must simultaneously satisfy GDPR, UNECE R155/R156/R157, EU AI Act traceability, and burden-shifting product liability. The architecture that scales is not the one with the largest training cluster. It is the one that minimizes configuration entropy, liability chain length, and external infrastructure dependency.</div>
-</div>
-
-<div class="section-label" id="ev">Electrification &amp; Powertrain</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19225893">Design for Permanence: A Reliability Doctrine for Electrified Powertrains</a></div>
-  <div class="paper-meta">2026-03-25 &middot; <a href="https://doi.org/10.5281/zenodo.19225893">10.5281/zenodo.19225893</a></div>
-  <div class="paper-abstract">In high-dimensional systems, Interaction Space exceeds Validation Space &mdash; field emergence is structural, not anomalous. Four architectural commitments: permanent cohort identity, local Drift Index computation, stress separation, invariant authority boundaries. The objective is not defect elimination. It is prevention of escalation when they emerge.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19260469">Beat CATL: Here Is How</a></div>
-  <div class="paper-meta">2026-03-27 &middot; <a href="https://doi.org/10.5281/zenodo.19260469">10.5281/zenodo.19260469</a></div>
-  <div class="paper-abstract">The binding constraint is process intelligence embedded in Chinese-owned firmware from hundreds of millions of production cycles &mdash; not purchasable, not reverse-engineerable, not subsidizable. A portability-replicability framework identifies the replicability horizon beyond which no capital deployment produces sovereign manufacturing in a policy-relevant timeframe.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19285842">Admit It: ZEV Means China Wins</a></div>
-  <div class="paper-meta">2026-03-28 &middot; <a href="https://doi.org/10.5281/zenodo.19285842">10.5281/zenodo.19285842</a></div>
-  <div class="paper-abstract">The ZEV mandate is a technology selection decision disguised as an environmental standard. BEVs at commercial cost require lithium carbonate refining (65% Chinese market share) and rare earth permanent magnet motors (90% Chinese refining share). The climate mandate is, in its operative supply chain effect, an industrial policy transfer to the PRC.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19268201">ICE Is Dead. Toyota's Engine Recall Proves It: Regulatory Complexity, Hidden Costs, and the Case for the Volt 3</a></div>
-  <div class="paper-meta">2026-03-28 &middot; <a href="https://doi.org/10.5281/zenodo.19268201">10.5281/zenodo.19268201</a></div>
-  <div class="paper-abstract">229,000 Toyota Tundra and Lexus vehicles recalled for V35A engine failure caused by regulatory pressure that made the trusted 5.7L V8 economically untenable. Full cost distribution traced across dealer, finance, and household balance sheets. A Volt 3 under $30,000 is the most consequential missing product in the 2026 American automotive market.</div>
-</div>
-
-<div class="section-label" id="foundations">Foundations</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19238287">Temporal Stability Framework: Constraints-Theory for Human Systems</a></div>
-  <div class="paper-meta">2026-03-26 &middot; <a href="https://doi.org/10.5281/zenodo.19238287">10.5281/zenodo.19238287</a></div>
-  <div class="paper-abstract">Stability is an informational property, not a moral one. Systems remain stable if and only if their mechanisms for reducing complexity allow reality to revise outcomes. Where Kalman formalized observability for engineered systems, this framework extends the same requirement to human and institutional systems through witnessing: the preservation of state-relevant truth across time.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19224051">Constraints Before Data: An Epistemology of Tractable Design</a></div>
-  <div class="paper-meta">2026-03-25 &middot; <a href="https://doi.org/10.5281/zenodo.19224051">10.5281/zenodo.19224051</a></div>
-  <div class="paper-abstract">The dominant problem-solving sequence &mdash; gather data, analyze, design, implement &mdash; is epistemologically wrong and practically expensive. The correct sequence begins with constraints. Ford spent $35B+ on a product that failed the constraint it never identified. Four words: who is the third buyer.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19227525">Constraint-Based Market Discovery and Product Design</a></div>
-  <div class="paper-meta">2026-03-26 &middot; <a href="https://doi.org/10.5281/zenodo.19227525">10.5281/zenodo.19227525</a></div>
-  <div class="paper-abstract">Markets are identified by locating binding constraints that suppress latent demand. The Third-Buyer Constraint: durable goods markets are only viable if there exists a credible third buyer in the resale chain. Without residual liquidity, markets fail regardless of first-buyer demand.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19183052">From Code Generation to Execution-Guided Debugging: The Next Frontier in AI-Assisted Software Engineering</a></div>
-  <div class="paper-meta">2026-03-23 &middot; <a href="https://doi.org/10.5281/zenodo.19183052">10.5281/zenodo.19183052</a></div>
-  <div class="paper-abstract">AI has solved the easy half of software engineering. A defect that reaches production costs 40&ndash;100&times; more than a defect caught in design. AI systems that increase code throughput without improving defect detection rates do not reduce this cost &mdash; they accelerate it.</div>
-</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19183114">The Last Hiring Cycle: A Career Guide for the 2026 Computer Science Graduate</a></div>
-  <div class="paper-meta">2026-03-23 &middot; <a href="https://doi.org/10.5281/zenodo.19183114">10.5281/zenodo.19183114</a></div>
-  <div class="paper-abstract">The entry-level software engineering job market changed structurally in 2024. Code reading is now harder to find than code writing. The Amazon March 2026 outage &mdash; 6.3 million lost orders, 16,000 engineers fired in January, mandatory AI usage in November, production failure in March &mdash; is the clearest evidence that the review layer is the point.</div>
-</div>
-
-<div class="section-label" id="strategy">Business Strategy</div>
-
-<div class="paper">
-  <div class="paper-title"><a href="https://doi.org/10.5281/zenodo.19379000">The Machines That Must Work Tomorrow: Epistemic Engineering as Industrial Strategy</a></div>
-  <div class="paper-meta">2026-04-01 &middot; <a href="https://doi.org/10.5281/zenodo.19379000">10.5281/zenodo.19379000</a></div>
-  <div class="paper-abstract">TVS HLX sold 4 million units across 57 countries not on price or specifications but on serviceability in markets where the third buyer is a mechanic with a bicycle and a box of parts. Epistemic engineering &mdash; the deliberate architecture of what a machine can know about itself in the field &mdash; is the binding constraint that Chinese manufacturers have not identified and Western OEMs have not priced. The machines that must work tomorrow are not the ones with the best datasheets today.</div>
-</div>
-
-</main>
+<nav id="nav"></nav>
+<main id="main"></main>
 
 <footer>
-  <div class="contact">
-    <a href="https://x.com/vrajeshkumar">@vrajeshkumar</a>
-  </div>
-  <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
-    <div class="linkedin">
-      <a href="https://www.linkedin.com/in/rajeshkumar-raj-venugopal-8795408" target="_blank" rel="noopener">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-label="LinkedIn">
-          <path fill="#0A66C2" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-        </svg>
-        LinkedIn
-      </a>
-    </div>
-    <div class="orcid">
-      <a href="https://orcid.org/0009-0002-1838-5976" target="_blank" rel="noopener">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-label="ORCID iD">
-          <path fill="#A6CE39" d="M128 0C57.3 0 0 57.3 0 128s57.3 128 128 128 128-57.3 128-128S198.7 0 128 0z"/>
-          <path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"/>
-        </svg>
-        0009-0002-1838-5976
-      </a>
-    </div>
-  </div>
+  <a href="https://x.com/vrajeshkumar" target="_blank" rel="noopener">@vrajeshkumar</a>
+  <a href="https://www.linkedin.com/in/rajeshkumar-raj-venugopal-8795408" target="_blank" rel="noopener">LinkedIn</a>
+  <a href="https://orcid.org/0009-0002-1838-5976" target="_blank" rel="noopener">ORCID 0009-0002-1838-5976</a>
 </footer>
 
 <script>
-(function () {
-  const input = document.getElementById('filter');
-  const papers = Array.from(document.querySelectorAll('.paper'));
-  const labels = Array.from(document.querySelectorAll('.section-label'));
-  const main = document.querySelector('main');
-  const noResults = document.createElement('p');
-  noResults.className = 'no-results';
-  noResults.textContent = 'No papers match.';
-  main.appendChild(noResults);
+// ─── STATE ────────────────────────────────────────────────────────────────────
+// WeakMap holds clean article clones for highlight reset.
+// Keys are DOM nodes — entries are GC'd automatically when nodes are removed.
+const cleanCache = new WeakMap();
+const statusEl   = document.getElementById("status");
 
-  input.addEventListener('input', function () {
-    const q = this.value.trim().toLowerCase();
+// ─── CONFIG ───────────────────────────────────────────────────────────────────
 
-    if (!q) {
-      papers.forEach(p => p.classList.remove('hidden'));
-      labels.forEach(l => l.classList.remove('hidden'));
-      noResults.style.display = 'none';
-      return;
+const SECTION_MAP = [
+  { title: "Sovereign Stress & Currency", id: "stress", dois: [
+    "10.5281/zenodo.19367715", "10.5281/zenodo.19318342", "10.5281/zenodo.19300200",
+    "10.5281/zenodo.19338367", "10.5281/zenodo.19355658", "10.5281/zenodo.19181739",
+    "10.5281/zenodo.19194636", "10.5281/zenodo.19102843"
+  ]},
+  { title: "Energy & Commodity", id: "energy", dois: [
+    "10.5281/zenodo.19360103", "10.5281/zenodo.19249679", "10.5281/zenodo.19249800",
+    "10.5281/zenodo.19249572", "10.5281/zenodo.19100668"
+  ]},
+  { title: "China", id: "china", dois: [
+    "10.5281/zenodo.19297611", "10.5281/zenodo.19161913", "10.5281/zenodo.19162677",
+    "10.5281/zenodo.19164078", "10.5281/zenodo.19115728", "10.5281/zenodo.19318886"
+  ]},
+  { title: "India", id: "india", dois: [
+    "10.5281/zenodo.19326283", "10.5281/zenodo.19240764", "10.5281/zenodo.19250234",
+    "10.5281/zenodo.19222952", "10.5281/zenodo.19236351", "10.5281/zenodo.19094589",
+    "10.5281/zenodo.19167881", "10.5281/zenodo.19204233", "10.5281/zenodo.19241950",
+    "10.5281/zenodo.19120513", "10.5281/zenodo.19133479", "10.5281/zenodo.19142988",
+    "10.5281/zenodo.19219960", "10.5281/zenodo.19228951"
+  ]},
+  { title: "Governance & Admissibility", id: "governance", dois: [
+    "10.5281/zenodo.19248318", "10.5281/zenodo.19243003", "10.5281/zenodo.19210384",
+    "10.5281/zenodo.19102678", "10.5281/zenodo.19102430", "10.5281/zenodo.19185535"
+  ]},
+  { title: "Electrification & Powertrain", id: "ev", dois: [
+    "10.5281/zenodo.19225893", "10.5281/zenodo.19260469",
+    "10.5281/zenodo.19285842", "10.5281/zenodo.19268201"
+  ]},
+  { title: "Foundations", id: "foundations", dois: [
+    "10.5281/zenodo.19238287", "10.5281/zenodo.19224051", "10.5281/zenodo.19227525",
+    "10.5281/zenodo.19183052", "10.5281/zenodo.19183114"
+  ]},
+  { title: "Business Strategy", id: "strategy", dois: [
+    "10.5281/zenodo.19379000"
+  ]}
+];
+
+// ─── UTILS ────────────────────────────────────────────────────────────────────
+
+// Strip HTML tags + decode entities via the browser's own parser. No regex.
+function htmlToText(html) {
+  const d = document.createElement("div");
+  d.innerHTML = html;
+  return d.textContent || d.innerText || "";
+}
+
+// Highlight every occurrence of q inside root.
+// TreeWalker collects text nodes; DocumentFragment splits replace them. No regex.
+function highlight(root, q) {
+  if (!q) return;
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const nodes  = [];
+  let node;
+  while ((node = walker.nextNode())) nodes.push(node);
+
+  for (const textNode of nodes) {
+    const text  = textNode.textContent;
+    const lower = text.toLowerCase();
+    let pos = lower.indexOf(q);
+    if (pos === -1) continue;
+
+    const frag   = document.createDocumentFragment();
+    let   cursor = 0;
+    while (pos !== -1) {
+      if (pos > cursor) frag.appendChild(document.createTextNode(text.slice(cursor, pos)));
+      const mark = document.createElement("mark");
+      mark.textContent = text.slice(pos, pos + q.length);
+      frag.appendChild(mark);
+      cursor = pos + q.length;
+      pos    = lower.indexOf(q, cursor);
+    }
+    if (cursor < text.length) frag.appendChild(document.createTextNode(text.slice(cursor)));
+    textNode.replaceWith(frag);
+  }
+}
+
+// ─── DOM INIT ─────────────────────────────────────────────────────────────────
+// Builds nav + section skeletons with ordered shimmer placeholders immediately,
+// before any network response arrives.
+
+function initDOM() {
+  const nav  = document.getElementById("nav");
+  const main = document.getElementById("main");
+
+  // Nav links
+  SECTION_MAP.forEach((s, i) => {
+    const a = document.createElement("a");
+    a.href        = "#" + s.id;
+    a.textContent = s.title;
+    nav.appendChild(a);
+    if (i < SECTION_MAP.length - 1) nav.append("\u00a0\u00b7\u00a0 ");
+  });
+
+  // Sections with placeholder articles in SECTION_MAP order
+  for (const s of SECTION_MAP) {
+    const section = document.createElement("section");
+    section.id    = s.id;
+    section.classList.add("hidden");
+
+    const h2       = document.createElement("h2");
+    h2.textContent = s.title;
+    section.appendChild(h2);
+
+    for (const doi of s.dois) {
+      const id  = doi.toLowerCase().split("zenodo.")[1];
+      const art = document.createElement("article");
+      art.className = "paper loading";
+      art.id        = "p-" + id;
+      section.appendChild(art);
     }
 
-    papers.forEach(p => {
-      p.classList.toggle('hidden', !p.textContent.toLowerCase().includes(q));
-    });
+    main.appendChild(section);
+  }
+}
 
-    labels.forEach(label => {
-      let next = label.nextElementSibling;
-      let anyVisible = false;
-      while (next && !next.classList.contains('section-label')) {
-        if (next.classList.contains('paper') && !next.classList.contains('hidden')) anyVisible = true;
-        next = next.nextElementSibling;
+// ─── FETCH ────────────────────────────────────────────────────────────────────
+// Fetch one record by DOI. If links.latest !== links.self a newer version
+// exists — follow it with one extra request. Returns a paper object or null.
+
+async function fetchOne(doi) {
+  const id = doi.split("zenodo.")[1];
+  if (!id) return null;
+
+  try {
+    let res  = await fetch("https://zenodo.org/api/records/" + id);
+    if (!res.ok) return null;
+    let data = await res.json();
+
+    const self   = data.links?.self;
+    const latest = data.links?.latest;
+    if (latest && latest !== self) {
+      res  = await fetch(latest);
+      if (!res.ok) return null;
+      data = await res.json();
+    }
+
+    const meta       = data.metadata ?? {};
+    const latestDoi  = (data.doi ?? doi).toLowerCase();
+    return {
+      doi:        doi,          // key matching SECTION_MAP + placeholder id
+      displayDoi: latestDoi,    // shown in the UI (may be a newer version)
+      title:      meta.title ?? "(no title)",
+      abstract:   htmlToText(meta.description ?? "").trim(),
+      date:       (meta.publication_date ?? "").slice(0, 10),
+      url:        "https://doi.org/" + latestDoi,
+    };
+  } catch {
+    return null;
+  }
+}
+
+// ─── FILL ─────────────────────────────────────────────────────────────────────
+// Hydrate a placeholder the moment its fetch resolves.
+// Builds every node with DOM API; stores a clean clone for highlight resets.
+
+function fillArticle(paper) {
+  const id  = paper.doi.split("zenodo.")[1];
+  const art = document.getElementById("p-" + id);
+  if (!art) return;
+
+  const h3        = document.createElement("h3");
+  const titleLink = document.createElement("a");
+  titleLink.href        = paper.url;
+  titleLink.target      = "_blank";
+  titleLink.rel         = "noopener";
+  titleLink.textContent = paper.title;
+  h3.appendChild(titleLink);
+
+  const meta   = document.createElement("div");
+  meta.className = "meta";
+
+  const dateSpan       = document.createElement("span");
+  dateSpan.className   = "date";
+  dateSpan.textContent = paper.date;
+
+  const doiSpan      = document.createElement("span");
+  doiSpan.className  = "doi";
+  const doiLink      = document.createElement("a");
+  doiLink.href        = paper.url;
+  doiLink.target      = "_blank";
+  doiLink.rel         = "noopener";
+  doiLink.textContent = paper.displayDoi;
+  doiSpan.appendChild(doiLink);
+  meta.append(dateSpan, doiSpan);
+
+  const abstract       = document.createElement("p");
+  abstract.className   = "abstract";
+  abstract.textContent = paper.abstract;
+
+  art.replaceChildren(h3, meta, abstract);
+  art.classList.remove("loading");
+
+  // Cache a clean clone in WeakMap — no expando properties on DOM nodes
+  cleanCache.set(art, art.cloneNode(true));
+
+  // Unhide the section as soon as its first paper lands
+  art.closest("section").classList.remove("hidden");
+}
+
+// ─── SEARCH ───────────────────────────────────────────────────────────────────
+
+function initSearch() {
+  const input = document.getElementById("search");
+  input.disabled = false;
+  input.focus();
+
+  input.addEventListener("input", () => {
+    const q = input.value.trim().toLowerCase();
+
+    for (const section of document.querySelectorAll("section")) {
+      let visible = 0;
+
+      for (const art of section.querySelectorAll("article.paper:not(.loading)")) {
+        const matches = !q || art.textContent.toLowerCase().includes(q);
+        art.classList.toggle("hidden", !matches);
+
+        if (matches) {
+          visible++;
+          if (q) {
+            // Reset highlights before re-applying
+            const clean = cleanCache.get(art);
+            if (clean) art.replaceChildren(...clean.cloneNode(true).childNodes);
+            highlight(art, q);
+          }
+        } else if (!q) {
+          // Search cleared — restore any article that was highlighted
+          const clean = cleanCache.get(art);
+          if (clean) art.replaceChildren(...clean.cloneNode(true).childNodes);
+        }
       }
-      label.classList.toggle('hidden', !anyVisible);
-    });
 
-    noResults.style.display = papers.some(p => !p.classList.contains('hidden')) ? 'none' : 'block';
+      // Fix 2: use the counter already computed — no second DOM query needed
+      section.classList.toggle("hidden", visible === 0);
+    }
   });
-})();
+
+  input.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+      input.value = "";
+      input.dispatchEvent(new Event("input"));
+    }
+  });
+}
+
+// ─── BOOT ─────────────────────────────────────────────────────────────────────
+// All fetches fire simultaneously. Each one fills its placeholder independently
+// the moment it resolves — no waiting for the slowest request.
+
+async function boot() {
+  initDOM();
+  initSearch();
+
+  const allDois = [...new Set(SECTION_MAP.flatMap(s => s.dois.map(d => d.toLowerCase())))];
+  const total   = allDois.length;
+  let   done    = 0;
+
+  const tick = () => {
+    done++;
+    statusEl.textContent = done < total ? `Loading… ${done} / ${total}` : "";
+  };
+
+  for (const doi of allDois) {
+    fetchOne(doi).then(paper => {
+      tick();
+      if (paper) fillArticle(paper);
+    });
+  }
+}
+
+boot().catch(err => {
+  statusEl.textContent = "Failed to load: " + err.message;
+  console.error(err);
+});
 </script>
 
 </body>
