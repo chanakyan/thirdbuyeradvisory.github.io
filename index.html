@@ -290,14 +290,17 @@ async function fetchOne(doi) {
     }
 
     const meta       = data.metadata ?? {};
+    const stats      = data.stats ?? {};
     const latestDoi  = (data.doi ?? doi).toLowerCase();
     return {
-      doi:        doi,          // key matching SECTION_MAP + placeholder id
-      displayDoi: latestDoi,    // shown in the UI (may be a newer version)
+      doi:        doi,
+      displayDoi: latestDoi,
       title:      meta.title ?? "(no title)",
       abstract:   htmlToText(meta.description ?? "").trim(),
       date:       (meta.publication_date ?? "").slice(0, 10),
       url:        "https://doi.org/" + latestDoi,
+      views:      stats.unique_views     ?? null,
+      downloads:  stats.unique_downloads ?? null,
     };
   } catch {
     return null;
@@ -336,7 +339,13 @@ function fillArticle(paper) {
   doiLink.rel         = "noopener";
   doiLink.textContent = paper.displayDoi;
   doiSpan.appendChild(doiLink);
+  const statsSpan = document.createElement("span");
+  statsSpan.className = "stats";
+  const vStr = paper.views != null ? paper.views + " views" : "";
+  const dStr = paper.downloads != null ? paper.downloads + " downloads" : "";
+  statsSpan.textContent = [vStr, dStr].filter(Boolean).join(" · ");
   meta.append(dateSpan, doiSpan);
+  if (statsSpan.textContent) meta.append(statsSpan);
 
   const abstract       = document.createElement("p");
   abstract.className   = "abstract";
