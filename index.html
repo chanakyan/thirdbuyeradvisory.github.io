@@ -146,7 +146,6 @@ const cleanCache = new WeakMap();
 const statusEl   = document.getElementById("status");
 
 // ─── CONFIG ───────────────────────────────────────────────────────────────────
-
 const SECTION_MAP = [
   { title: "Sovereign Stress & Currency", id: "stress", dois: [
     "10.5281/zenodo.19367715", "10.5281/zenodo.19318342", "10.5281/zenodo.19300200",
@@ -169,6 +168,7 @@ const SECTION_MAP = [
     "10.5281/zenodo.19219960", "10.5281/zenodo.19228951"
   ]},
   { title: "Governance & Admissibility", id: "governance", dois: [
+    "10.5281/zenodo.19424107",
     "10.5281/zenodo.19248318", "10.5281/zenodo.19243003", "10.5281/zenodo.19210384",
     "10.5281/zenodo.19102678", "10.5281/zenodo.19102430", "10.5281/zenodo.19185535"
   ]},
@@ -182,6 +182,9 @@ const SECTION_MAP = [
   ]},
   { title: "Business Strategy", id: "strategy", dois: [
     "10.5281/zenodo.19379000"
+  ]},
+  { title: "Miscellaneous", id: "misc", dois: [
+    // Paste new DOIs here — sort into a proper section later (or don't).
   ]}
 ];
 
@@ -347,6 +350,18 @@ function fillArticle(paper) {
   art.closest("section").classList.remove("hidden");
 }
 
+// ─── FAIL ─────────────────────────────────────────────────────────────────────
+// Called when fetchOne returns null. Collapses the shimmer placeholder silently.
+// The section stays hidden if every one of its articles fails.
+
+function failArticle(doi) {
+  const id  = doi.split("zenodo.")[1];
+  const art = document.getElementById("p-" + id);
+  if (!art) return;
+  art.classList.remove("loading");
+  art.classList.add("hidden");
+}
+
 // ─── SEARCH ───────────────────────────────────────────────────────────────────
 
 function initSearch() {
@@ -413,6 +428,7 @@ async function boot() {
     fetchOne(doi).then(paper => {
       tick();
       if (paper) fillArticle(paper);
+      else        failArticle(doi);
     });
   }
 }
