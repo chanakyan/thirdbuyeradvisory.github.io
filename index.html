@@ -121,10 +121,12 @@
 <header>
   <h1>Third Buyer Advisory</h1>
   <div class="author">Rajeshkumar Venugopal</div>
-  <div class="tagline">Independent researcher · @vrajeshkumar</div>
+  <div class="tagline">Independent researcher · Third Buyer Advisory LLC · @vrajeshkumar</div>
   <p class="desc">Working papers on sovereign stress detection, supply chain currency risk,
     early warning instruments, India, China, and electrified powertrain governance.
     All papers open access on Zenodo. Priority established by DOI timestamp.</p>
+  <p class="desc">Third Buyer Advisory identifies market risks through constraint analysis,
+    legal exposure, and economic signal detection.</p>
   <input id="search" type="search" placeholder="Search papers…" autocomplete="off" spellcheck="false" disabled>
   <div id="status">Loading…</div>
 </header>
@@ -348,21 +350,49 @@ function fillArticle(paper) {
 
   // Unhide the section as soon as its first paper lands
   art.closest("section").classList.remove("hidden");
+
+  // Re-run the active search filter so this paper obeys any live query
+  const input = document.getElementById("search");
+  if (input && input.value.trim()) runFilter(input.value.trim().toLowerCase());
 }
 
 // ─── FAIL ─────────────────────────────────────────────────────────────────────
-// Called when fetchOne returns null. Collapses the shimmer placeholder silently.
-// The section stays hidden if every one of its articles fails.
+// Called when fetchOne returns null. Removes the placeholder entirely so the
+// search handler never counts it and hidden-class conflicts can't occur.
 
 function failArticle(doi) {
   const id  = doi.split("zenodo.")[1];
   const art = document.getElementById("p-" + id);
-  if (!art) return;
-  art.classList.remove("loading");
-  art.classList.add("hidden");
+  if (art) art.remove();
 }
 
 // ─── SEARCH ───────────────────────────────────────────────────────────────────
+
+// Extracted so fillArticle can re-run the filter after each paper lands.
+function runFilter(q) {
+  for (const section of document.querySelectorAll("section")) {
+    let visible = 0;
+
+    for (const art of section.querySelectorAll("article.paper:not(.loading)")) {
+      const matches = !q || art.textContent.toLowerCase().includes(q);
+      art.classList.toggle("hidden", !matches);
+
+      if (matches) {
+        visible++;
+        if (q) {
+          const clean = cleanCache.get(art);
+          if (clean) art.replaceChildren(...clean.cloneNode(true).childNodes);
+          highlight(art, q);
+        }
+      } else if (!q) {
+        const clean = cleanCache.get(art);
+        if (clean) art.replaceChildren(...clean.cloneNode(true).childNodes);
+      }
+    }
+
+    section.classList.toggle("hidden", visible === 0);
+  }
+}
 
 function initSearch() {
   const input = document.getElementById("search");
@@ -370,41 +400,49 @@ function initSearch() {
   input.focus();
 
   input.addEventListener("input", () => {
-    const q = input.value.trim().toLowerCase();
-
-    for (const section of document.querySelectorAll("section")) {
-      let visible = 0;
-
-      for (const art of section.querySelectorAll("article.paper:not(.loading)")) {
-        const matches = !q || art.textContent.toLowerCase().includes(q);
-        art.classList.toggle("hidden", !matches);
-
-        if (matches) {
-          visible++;
-          if (q) {
-            // Reset highlights before re-applying
-            const clean = cleanCache.get(art);
-            if (clean) art.replaceChildren(...clean.cloneNode(true).childNodes);
-            highlight(art, q);
-          }
-        } else if (!q) {
-          // Search cleared — restore any article that was highlighted
-          const clean = cleanCache.get(art);
-          if (clean) art.replaceChildren(...clean.cloneNode(true).childNodes);
-        }
-      }
-
-      // Fix 2: use the counter already computed — no second DOM query needed
-      section.classList.toggle("hidden", visible === 0);
-    }
+    runFilter(input.value.trim().toLowerCase());
   });
 
   input.addEventListener("keydown", e => {
     if (e.key === "Escape") {
       input.value = "";
-      input.dispatchEvent(new Event("input"));
+      runFilter("");
     }
   });
+}
+
+// ─── ORCID AUTO-DISCOVERY ─────────────────────────────────────────────────────
+// Fetches every record published under this ORCID. Any DOI not already in
+// SECTION_MAP is injected into the Miscellaneous section automatically.
+// Upload a paper to Zenodo and it appears here without touching the HTML.
+
+const ORCID = "0009-0002-1838-5976";
+
+async function fetchByOrcid() {
+  try {
+    const url = `https://zenodo.org/api/records?q=creators.orcid:${ORCID}&size=200&sort=newest`;
+    const res = await fetch(url);
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.hits?.hits ?? [];
+  } catch {
+    return [];
+  }
+}
+
+function injectMisc(paper) {
+  const section = document.getElementById("misc");
+  if (!section) return;
+
+  const id = paper.doi.split("zenodo.")[1];
+  if (!id || document.getElementById("p-" + id)) return; // already rendered
+
+  const art = document.createElement("article");
+  art.className = "paper loading";
+  art.id        = "p-" + id;
+  section.querySelector("h2").after(art); // newest at top
+
+  fillArticle(paper);
 }
 
 // ─── BOOT ─────────────────────────────────────────────────────────────────────
@@ -425,18 +463,44 @@ async function boot() {
   };
 
   for (const doi of allDois) {
-    fetchOne(doi).then(paper => {
-      tick();
-      if (paper) fillArticle(paper);
-      else        failArticle(doi);
-    });
+    fetchOne(doi)
+      .then(paper => {
+        tick();
+        if (paper) fillArticle(paper);
+        else        failArticle(doi);
+      })
+      .catch(err => {
+        tick();
+        failArticle(doi);
+        console.error("Failed to load", doi, err);
+      });
   }
+
+  // Fire ORCID discovery in parallel — doesn't block or affect the main counter
+  fetchByOrcid().then(hits => {
+    const knownIds = new Set(allDois.map(d => d.split("zenodo.")[1]));
+    for (const hit of hits) {
+      const doi = (hit.doi ?? "").toLowerCase();
+      const id  = doi.split("zenodo.")[1];
+      if (!id || knownIds.has(id)) continue;
+      const meta = hit.metadata ?? {};
+      injectMisc({
+        doi,
+        displayDoi: doi,
+        title:    meta.title ?? "(no title)",
+        abstract: htmlToText(meta.description ?? "").trim(),
+        date:     (meta.publication_date ?? "").slice(0, 10),
+        url:      "https://doi.org/" + doi,
+      });
+    }
+  });
 }
 
 boot().catch(err => {
   statusEl.textContent = "Failed to load: " + err.message;
   console.error(err);
 });
+
 </script>
 
 </body>
