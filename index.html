@@ -82,6 +82,9 @@
       from { background-position: 200% 0; }
       to   { background-position: -200% 0; }
     }
+    @media (prefers-reduced-motion: reduce) {
+      article.paper.loading { animation: none; }
+    }
 
     article.paper h3 {
       font-size: 1.05rem; font-weight: 700; line-height: 1.35;
